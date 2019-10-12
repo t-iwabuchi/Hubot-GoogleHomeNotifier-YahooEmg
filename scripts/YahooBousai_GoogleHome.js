@@ -18,7 +18,8 @@ module.exports = (robot) =>
 
     message = message
         .replace(/mm\/h/g, '毎時ミリメートル')
-        .replace(/千曲川/g, 'ちくまがわ')
+        .replace(/千曲川/g, 'ちくま川')
+        .replace(/越水/g, 'えっすい')
     
     let sliced = false
 
