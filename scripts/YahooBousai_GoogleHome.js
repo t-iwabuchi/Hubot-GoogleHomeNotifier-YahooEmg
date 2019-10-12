@@ -19,6 +19,10 @@ module.exports = (robot) =>
         .replace(/(-|\*)/g, '')
         .replace(/^$(\r\n|\r|\n)?/gm, '\n') // 空行
         .replace(/▼[\s\S]*/gm, '')
+
+    message = message
+        .replace(/mm\/h/g, '毎時ミリメートル')
+        .replace(/千曲川/g, 'ちくまがわ')
     
     if (message.length > 200) {
       message = message.slice(0, 199)
@@ -28,7 +32,7 @@ module.exports = (robot) =>
     googlehome.device('Google-Home', language);
     googlehome.notify(message, (res) => console.log(res));
     console.log(message)
-    await wait(30)
+    await wait(80)
     if (sliced == true) {
       googlehome.notify("文字数制限のため、一部の情報が削られました", (res) => console.log(res));
       await wait(10)
