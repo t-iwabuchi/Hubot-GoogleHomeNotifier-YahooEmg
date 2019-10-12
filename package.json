@@ -5,6 +5,7 @@
   "author": "takameron <takameron.info@gmail.com>",
   "description": "A simple helpful robot for my Home",
   "dependencies": {
+    "google-home-notifier": "^1.2.0",
     "hubot": "^3.3.2",
     "hubot-diagnostics": "^1.0.0",
     "hubot-google-images": "^0.2.7",
