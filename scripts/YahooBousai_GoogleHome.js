@@ -32,7 +32,7 @@ module.exports = (robot) =>
     googlehome.device('Google-Home', language);
     googlehome.notify(message, (res) => console.log(res));
     console.log(message)
-    await wait(80)
+    await wait(60)
     if (sliced == true) {
       googlehome.notify("文字数制限のため、一部の情報が削られました", (res) => console.log(res));
       await wait(10)
