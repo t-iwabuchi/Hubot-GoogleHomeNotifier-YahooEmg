@@ -1,0 +1,18 @@
+{
+    "apps":[
+        {
+            "name"             : "slack-bot",
+            "args"             : ["-a", "slack"],
+            "script"           : "./bin/hubot",
+            "exec_mode"        : "fork",
+            "exec_interpreter" : "bash",
+            "autorestart"      : true,
+            "env": {
+                "NODE_ENV"           : "production",
+                "PORT"               : "8080",
+                "HUBOT_SLACK_TOKEN"  : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "HUBOT_GOOGLE_HOME_IP_ADDRESS" : "xxx.xxx.xxx.xxx"
+            }
+        }
+    ]
+}
