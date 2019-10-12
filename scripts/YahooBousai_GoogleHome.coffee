@@ -8,9 +8,11 @@ module.exports = (robot) ->
   robot.hear /Yahoo! JAPAN 防災速報/i, (msg) ->
     message = msg.message.text
         .replace(/.* のYahoo! JAPAN IDで登録された情報をお届けします。/g, '')
-        .replace(/-+[\s\S]*?-+/gm, '')
-        .replace(/-/g, '')
-        .replace(/\n\n/g, '\n')
+        .replace(/.(発表時刻|配信時刻|気象庁発表).\n.*/g, '')
+        .replace(/.タイトル.\n.*/gm, '')
+        # .replace(/(-|\*)+[\s\S]*?(-|\*)+/gm, '') # - や * で囲まれたブロック
+        .replace(/(-|\*)/g, '')
+        .replace(/^$(\r\n|\r|\n)?/gm, '\n') # 空行
         .replace(/▼[\s\S]*/gm, '')
     
     if (message.length > 200)
