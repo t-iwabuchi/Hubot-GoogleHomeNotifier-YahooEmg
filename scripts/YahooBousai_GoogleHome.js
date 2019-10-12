@@ -18,12 +18,15 @@ module.exports = (robot) =>
         // .replace(/(-|\*)+[\s\S]*?(-|\*)+/gm, '') // - や * で囲まれたブロック
         .replace(/(-|\*)/g, '')
         .replace(/^$(\r\n|\r|\n)?/gm, '\n') // 空行
+        .replace(/\n\n/gm, '\n') // 空行
         .replace(/▼[\s\S]*/gm, '')
 
     message = message
         .replace(/mm\/h/g, '毎時ミリメートル')
         .replace(/千曲川/g, 'ちくまがわ')
     
+    let sliced = false
+
     if (message.length > 200) {
       message = message.slice(0, 199)
       sliced = true
