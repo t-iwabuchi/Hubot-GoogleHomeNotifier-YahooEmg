@@ -4,6 +4,11 @@
 googlehome = require('google-home-notifier')
 language = 'ja'
 
+wait = (sec) =>
+	new Promise((resolve, reject) => {
+	  setTimeout(resolve, sec*1000);
+	});
+
 module.exports = (robot) =>
   robot.hear(/Yahoo! JAPAN 防災速報/i, async(msg) => {
     message = msg.message.text
@@ -29,15 +34,11 @@ module.exports = (robot) =>
     }
 
     googlehome.device('Google-Home', language);
-    setTimeout(() => {
-      googlehome.notify(message, (res) => console.log(res))
-      , 10 * 1000
-    })
+    googlehome.notify(message, (res) => console.log(res));
     console.log(message)
+    await wait(60)
     if (sliced == true) {
-      setTimeout(() => {
-        googlehome.notify("文字数制限のため、一部の情報が削られました", (res) => console.log(res))
-        , 60 * 1000
-      })
+      googlehome.notify("文字数制限のため、一部の情報が削られました", (res) => console.log(res));
+      await wait(10)
     }
   })
